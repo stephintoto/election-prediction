@@ -1,0 +1,30 @@
+
+.container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+form {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+label, select {
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+button {
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #1a73e8;
+    color: white;
+    border-radius: 5px;
+}

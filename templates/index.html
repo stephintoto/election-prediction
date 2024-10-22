@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>Election Prediction 2024</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='Harris-Trump-General.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(1.1) contrast(1.2); /* Increase these values to enhance clarity */
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: rgba(70, 69, 69, 0.8);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hero-section {
+            background-image: url('Harris-Trump-General.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .content-section {
+            padding: 50px 0;
+        }
+
+        .state-selection {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .state-selection select {
+            width: 30%; /* Adjusted width */
+            padding: 10px;
+            font-size: 1.2rem;
+            margin: 0 auto; /* This centers the select box */
+            border: 2px solid black; /* Add black border */
+        }
+
+        .predict-btn {
+            font-size: 1.2rem;
+            padding: 10px 30px;
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .predict-btn:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        .footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Add black border to content text */
+        .content-section h2,
+        .content-section p {
+            text-shadow: 1px 1px 0 black; /* Black text shadow for better visibility */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Election 2024</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/predictions">Predictions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1>2024 Election Prediction</h1>
+            <p>Trump vs Harris: Predict the Winner of Swing States</p>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="container content-section">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                
+                <div class="state-selection">
+                    <form action="/predict" method="POST">
+                        <label for="state" class="form-label">Select a State:</label>
+                        <select id="state" class="form-select" name="state" aria-label="State Selection">
+                            <option value="Arizona">Arizona</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Pennsylvania">Pennsylvania</option>
+                            <option value="Michigan">Michigan</option>
+                            <option value="Nevada">Nevada</option>
+                            <option value="Wisconsin">Wisconsin</option>
+                            <option value="North Carolina">North Carolina</option>
+                        </select>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary predict-btn">Predict Winner</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Election Prediction App | Powered by Flask & Bootstrap</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

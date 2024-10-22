@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>About - Election Prediction 2024</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, rgb(183, 59, 59), rgb(57, 88, 135));
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: rgba(70, 69, 69, 0.8);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .content-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        /* Card Style */
+        article {
+            --hover: 0;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+        }
+
+        article:hover {
+            --hover: 1;
+        }
+
+        figure {
+            width: 100%;
+            aspect-ratio: 8 / 5;
+            --bg: hsl(330 80% calc(90% - (var(--hover) * 10%)));
+            --accent: hsl(280 80% 40%);
+            transition: background 0.2s;
+            background:
+                radial-gradient(circle at top left, var(--accent), transparent 75%),
+                var(--bg);
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+
+        figure:after {
+            content: "";
+            position: static;
+            width: 20%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            bottom: 0%;
+            left: 10%;
+            background: linear-gradient(-65deg, var(--bg) 50%, var(--accent) 50%);
+            filter: blur(25px);
+            transform:
+                translateX(calc(var(--hover) * 15%))
+                scale(calc(1 + (var(--hover) * 0.2)));
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .profile-flex {
+            display: flex; /* Use Flexbox to arrange elements side by side */
+            align-items: center; /* Center the items vertically */
+            position: relative; /* Relative position for the hover effect */
+            transition: transform 0.2s; /* Transition effect for the hover */
+        }
+
+        .profile-flex:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+
+        .profile-flex img {
+            object-fit: fill;
+            width: 30%; /* Adjust the width to show your full picture */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 15px; /* Space between image and text */
+            border-radius: 0; /* Remove the circular border */
+        }
+
+        .profile-info {
+            color: white; /* Keep the text color white */
+        }
+
+        .profile-info h2 {
+            margin: 0; /* Remove margin for the heading */
+            font-size: 1.5rem; /* Adjust font size if necessary */
+        }
+
+        .profile-info p {
+            margin: 5px 0 0; /* Add margin to the paragraph */
+        }
+
+        .aim-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .aim-section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .aim-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .aim-section ul li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        p {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Election 2024</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/predictions">Predictions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>About This Project</h1>
+    </div>
+
+    <!-- Profile Card Section -->
+    <div class="container">
+        <article>
+            <figure class="profile-flex">
+                <img src="{{ url_for('static', filename='pro.png') }}" alt="Stephin John">
+                <div class="profile-info">
+                    <h2>Stephin John</h2>
+                    <p>Data Science & Machine Learning Student</p>
+                </div>
+            </figure>
+        </article>
+    </div>
+    
+
+    <!-- Aim Section -->
+    <div class="container aim-section">
+        <h3>Project Aim</h3>
+        <ul>
+            <li>1. Predicting the probable winner of swing states using a Random Forest Regressor model.</li>
+            <li>2. Using Naive Bayes to estimate the winner based on the 2020 election results and current polling data, accompanied by an error graph.</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Election Prediction App | Powered by Flask & Bootstrap</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
